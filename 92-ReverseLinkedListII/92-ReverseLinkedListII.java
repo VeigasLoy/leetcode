@@ -1,4 +1,4 @@
-// Last updated: 4/28/2025, 10:38:45 AM
+// Last updated: 4/28/2025, 10:38:59 AM
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if(head == null || left == right) return head;
