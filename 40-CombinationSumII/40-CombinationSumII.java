@@ -1,4 +1,4 @@
-// Last updated: 7/15/2025, 11:48:45 AM
+// Last updated: 7/15/2025, 11:52:55 AM
 class Solution {
 
     static void backtrack(int[] candidates, int target, List<List<Integer>> res, List<Integer> subList, int start) {
@@ -6,12 +6,13 @@ class Solution {
             res.add(new ArrayList<>(subList));
             return;
         }
+        if(target<0){
+            return;
+        }
 
         for (int i = start; i < candidates.length; i++) {
-            // Skip duplicates
             if (i > start && candidates[i] == candidates[i - 1]) continue;
 
-            // If current number exceeds target, break (sorted array)
             if (candidates[i] > target) break;
 
             subList.add(candidates[i]);
