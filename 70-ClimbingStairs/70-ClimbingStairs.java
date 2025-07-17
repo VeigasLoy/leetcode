@@ -1,0 +1,14 @@
+// Last updated: 7/17/2025, 11:17:10 AM
+class Solution {
+    int[] memo = new int[46];
+    public int climbStairs(int n) {
+        if(n<=3){
+            return n;
+        }
+        if(memo[n]!=0){
+            return memo[n];
+        }
+        memo[n] = climbStairs(n-1)+climbStairs(n-2);
+        return memo[n];
+    }
+}
