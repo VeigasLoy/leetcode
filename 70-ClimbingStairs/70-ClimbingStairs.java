@@ -1,14 +1,14 @@
-// Last updated: 7/17/2025, 11:17:10 AM
+// Last updated: 7/17/2025, 11:19:39 AM
 class Solution {
-    int[] memo = new int[46];
+    int[] dp = new int[46];
     public int climbStairs(int n) {
-        if(n<=3){
-            return n;
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 3;
+        for(int i=4;i<=n;i++){
+            dp[i] = dp[i-1]+dp[i-2];
         }
-        if(memo[n]!=0){
-            return memo[n];
-        }
-        memo[n] = climbStairs(n-1)+climbStairs(n-2);
-        return memo[n];
+        return dp[n];
     }
 }
