@@ -1,13 +1,14 @@
-// Last updated: 7/17/2025, 10:13:14 AM
+// Last updated: 7/17/2025, 10:17:15 AM
 class Solution {
-    int[] memo = new int[31];
+    int[] dp = new int[31];
 
     public int fib(int n) {
-        if (n <= 1)
-            return n;
-        if (memo[n] != 0)
-            return memo[n];
-        memo[n] = fib(n - 1) + fib(n - 2);
-        return memo[n];
+        dp[0] = 0;
+        dp[1] = 1;
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-1]+dp[i-2];
+        }
+        return dp[n];
     }
+
 }
