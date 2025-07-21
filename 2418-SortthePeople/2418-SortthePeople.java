@@ -1,24 +1,23 @@
-// Last updated: 7/21/2025, 11:07:27 AM
-class Person{
-        int height;
-        String name;
-        Person(int h, String n){
-            height=h;
-            name=n;
-        }
-    }
+// Last updated: 7/21/2025, 11:49:42 AM
 class Solution {
- 
-    public String[] sortPeople(String[] names, int[] heights) {
-            Person[] persons = new Person[names.length];
-            for(int i=0;i<names.length;i++)
-                persons[i] = new Person(heights[i],names[i]);
-            Arrays.sort(persons,(p1,p2)->p2.height-p1.height);
-            String[] res = new String[names.length];
-            int i=0;
-            for(Person p: persons){
-                res[i++]=p.name;
-            }
-            return res;
+    public int[] sortByBits(int[] nums) {
+        Integer arr[] = new Integer[nums.length];
+        for(int i=0;i<nums.length;i++){
+            arr[i] = nums[i];
         }
+        Arrays.sort(arr,(Integer a, Integer b)->{
+            int cntA = Integer.bitCount(a);
+            int cntB = Integer.bitCount(b);
+            if(cntA!=cntB){
+                return cntA-cntB;
+            }
+            else{
+                return a-b;
+            }
+        });
+        for(int i=0;i<nums.length;i++){
+            nums[i] = arr[i];
+        }
+        return nums;
     }
+}
