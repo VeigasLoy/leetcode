@@ -1,23 +1,35 @@
-// Last updated: 7/21/2025, 11:49:42 AM
+// Last updated: 7/21/2025, 12:19:45 PM
 class Solution {
-    public int[] sortByBits(int[] nums) {
-        Integer arr[] = new Integer[nums.length];
-        for(int i=0;i<nums.length;i++){
-            arr[i] = nums[i];
-        }
-        Arrays.sort(arr,(Integer a, Integer b)->{
-            int cntA = Integer.bitCount(a);
-            int cntB = Integer.bitCount(b);
-            if(cntA!=cntB){
-                return cntA-cntB;
-            }
-            else{
-                return a-b;
+    static HashMap<Character, Integer> sortByValue(HashMap<Character, Integer> hm) {
+        List<Map.Entry<Character, Integer> > list = new LinkedList<Map.Entry<Character, Integer> >(hm.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<Character, Integer> >() {
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                return (o2.getValue().compareTo(o1.getValue()));
             }
         });
-        for(int i=0;i<nums.length;i++){
-            nums[i] = arr[i];
+        
+        HashMap<Character, Integer> temp = new LinkedHashMap<Character, Integer>();
+        for (Map.Entry<Character, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
         }
-        return nums;
+        return temp;
+    }
+
+    public String frequencySort(String s) {
+        HashMap<Character,Integer> map = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        }
+        Map<Character, Integer> hm = sortByValue(map);
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<Character, Integer> en : hm.entrySet()) {
+            char key = en.getKey();
+            int value = en.getValue();
+            while(value-->0){
+                sb.append(key);
+            }
+        }
+        return sb.toString();
     }
 }
