@@ -1,25 +1,12 @@
-// Last updated: 7/24/2025, 9:17:52 PM
+// Last updated: 7/24/2025, 9:33:37 PM
 class Solution {
-    public int removeDuplicates(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-        int i=0;
-        if(nums.length==1){
-            return 1;
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int num:nums){
+            map.put(num,map.getOrDefault(num,0)+1);
+            if(map.get(num)>(nums.length/2))
+                return num;
         }
-        while(i<nums.length){
-            if(nums[i]!=nums[i+1]){
-                list.add(nums[i]);
-            }
-            i++;
-            if(i==nums.length-1){
-                list.add(nums[i]);
-                i++;
-            }
-                
-        }
-        for (i = 0; i < list.size(); i++) {
-            nums[i] = list.get(i);
-        }
-        return list.size();
+        return 0;
     }
 }
