@@ -1,11 +1,27 @@
-// Last updated: 7/26/2025, 11:44:30 AM
+// Last updated: 7/26/2025, 12:25:30 PM
 class Solution {
-    public int maxProfit(int[] prices) {
-        int profit=0;
-        for(int i=1;i<prices.length;i++){
-            if(prices[i-1]<prices[i])
-                profit += prices[i]-prices[i-1];
+    public int evalRPN(String[] tokens) {
+        Stack<String> s = new Stack<>();
+        int i=0;
+        while(i<tokens.length){
+            if(tokens[i].equals("+")||tokens[i].equals("-")||tokens[i].equals("*")||tokens[i].equals("/")){
+                int num2 = Integer.parseInt(s.pop());
+                int num1 = Integer.parseInt(s.pop());
+                StringBuilder sb = new StringBuilder();
+                if(tokens[i].equals("+"))
+                    s.push(sb.append(num1+num2).toString());
+                if(tokens[i].equals("-"))
+                    s.push(sb.append(num1-num2).toString());
+                if(tokens[i].equals("*"))
+                    s.push(sb.append(num1*num2).toString());
+                if(tokens[i].equals("/"))
+                    s.push(sb.append(num1/num2).toString());
+            }
+            else{
+                s.push(tokens[i]);
+            }
+            i++;
         }
-        return profit;
+        return Integer.parseInt(s.pop());
     }
 }
