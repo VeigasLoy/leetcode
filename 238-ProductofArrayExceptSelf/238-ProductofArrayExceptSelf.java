@@ -1,21 +1,18 @@
-// Last updated: 7/25/2025, 9:52:25 PM
+// Last updated: 7/28/2025, 9:58:30 AM
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        if(s.length()==0||s.length()==1)   return s.length();
-        int start = 0, end = 1;
-        int len = 0;
-        ArrayList<Character> al = new ArrayList<>();
-        al.add(s.charAt(0)); 
-        while(end<s.length()){
-            if(al.contains(s.charAt(end))){
-                al.subList(0,al.indexOf(s.charAt(end))+1).clear();
-            }
-            if(!al.contains(s.charAt(end))){
-                al.add(s.charAt(end));
-            }
-            len = Math.max(len,al.size());
-            end++;
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        int left = 1, right = 1;
+        Arrays.fill(res,1);
+        for(int i=0;i<n;i++){
+            res[i] *= left;
+            left *= nums[i];
         }
-        return len;
+        for(int i=n-1;i>-1;i--){
+            res[i] *= right;
+            right *= nums[i];
+        }
+        return res;
     }
 }
