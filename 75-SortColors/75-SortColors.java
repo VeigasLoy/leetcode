@@ -1,25 +1,17 @@
-// Last updated: 7/28/2025, 2:51:18 PM
+// Last updated: 7/28/2025, 3:05:51 PM
 class Solution {
-    public void sortColors(int[] nums) {
-        int low = 0, high = nums.length - 1;
-        int i = 0;
-        while(i <= high){
-            if (nums[i] == 0) {
-                swap(nums, i, low);
-                low++;
-                i++;
-            } else if(nums[i] == 2){
-                swap(nums, i, high);
-                high--;
-            } else{
-                i++;
+    public int maxArea(int[] height) {
+        int max = 0;
+        int j=height.length-1;
+        int i=0;
+        while(i<j){
+            if(max<Math.min(height[i],height[j])*(j-i)){
+                max = Math.min(height[i],height[j])*(j-i);
             }
+            if(height[i]<height[j]){
+                i++;
+            }else j--;
         }
-    }
-    
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+        return max;
     }
 }
