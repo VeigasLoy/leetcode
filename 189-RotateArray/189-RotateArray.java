@@ -1,18 +1,18 @@
-// Last updated: 7/31/2025, 9:30:54 AM
+// Last updated: 7/31/2025, 9:40:29 AM
 class Solution {
     public void rotate(int[] nums, int k) {
-        Deque<Integer> d = new ArrayDeque<>();
-        for(int num:nums){
-            d.add(num);
-        }
-        int n=nums.length-1;
-        for(int i=0;i<k;i++){
-            d.addFirst(d.pollLast());
-        }
-        int i=0;
-        for(int ds: d){
-            nums[i]=ds;
-            i++;
+
+        k = k % nums.length;
+        swap(nums, nums.length-k, nums.length-1);
+        swap(nums, 0, nums.length-k-1);
+        swap(nums, 0, nums.length-1);
+    }
+
+    public void swap(int[] nums, int start, int end) {
+        while(start < end) {
+            int temp = nums[start];
+            nums[start++] = nums[end];
+            nums[end--] = temp;
         }
     }
 }
