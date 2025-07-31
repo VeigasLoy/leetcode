@@ -1,18 +1,27 @@
-// Last updated: 7/31/2025, 9:20:51 PM
+// Last updated: 7/31/2025, 9:40:22 PM
 class Solution {
-    public static String decToBin(int n){
-        StringBuilder s = new StringBuilder();
-        while(n>0){
-            s.append(n%2);
-            n/=2;
-        }
-        while(s.length()<32){
-            s.append(0);
-        }
-        return s.toString();
+
+    public boolean isLetter(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
-    public int reverseBits(int n) {
-        String s = decToBin(n);
-        return Integer.parseInt(s,2);
+
+    public String reverseOnlyLetters(String s) {
+        char[] ch = s.toCharArray();
+        int start=0, end=ch.length-1;
+        while(start<end){
+            if(isLetter(ch[start]) && isLetter(ch[end])){
+                char tmp = ch[start];
+                ch[start++] = ch[end];
+                ch[end--] = tmp;
+            }
+            else if(!isLetter(ch[start]))
+                start++;
+            else end--;
+        }
+        StringBuilder sb = new StringBuilder();
+        for(char c:ch){
+            sb.append(c);
+        }
+        return sb.toString();
     }
 }
