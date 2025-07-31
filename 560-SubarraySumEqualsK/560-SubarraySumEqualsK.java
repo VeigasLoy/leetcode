@@ -1,6 +1,11 @@
-// Last updated: 7/31/2025, 9:18:45 PM
+// Last updated: 7/31/2025, 9:20:30 PM
 class Solution {
-    public String decToBin(int n){
+    static{
+        for(int i=0;i<1000;i++){
+            decToBin(i);
+        }
+    }
+    public static String decToBin(int n){
         StringBuilder s = new StringBuilder();
         while(n>0){
             s.append(n%2);
