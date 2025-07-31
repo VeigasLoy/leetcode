@@ -1,10 +1,10 @@
-// Last updated: 7/31/2025, 10:21:54 AM
+// Last updated: 7/31/2025, 10:22:10 AM
 class Solution {
     List<List<Integer>> list = new ArrayList<>();
     public void subset(int[] nums, ArrayList<Integer> arr, int pos,int n){
         if(pos==n){
             list.add(new ArrayList<Integer>(arr));
-            System.out.println(arr);
+            // System.out.println(arr);
             return;
         }
         arr.add(nums[pos]);
