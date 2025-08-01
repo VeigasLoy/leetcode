@@ -1,19 +1,19 @@
-// Last updated: 8/1/2025, 10:31:32 AM
+// Last updated: 8/1/2025, 11:50:24 AM
 class Solution {
-    public String reverseWords(String s) {
-        int start =0, end = 0;
-        char[] ch = s.toCharArray();
-        StringBuilder sb = new StringBuilder();
-        while(end<=ch.length){
-            if(end==ch.length || ch[end]==' '){
-                sb.append(new StringBuilder(s.substring(start,end)).reverse());
-                if(end!=ch.length){
-                    sb.append(" ");
-                    start = end+1;
-                }  
+    public boolean isSubstringPresent(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        StringBuilder sb1 = new StringBuilder(s);
+        sb1.reverse();
+        int start = 0, end = start+2;
+        while(start+1<s.length()){
+            System.out.println(sb.substring(start,end));
+            if(sb1.indexOf((sb.substring(start,end)))!=(-1))
+                return true;
+            else{
+                start++;
+                end++;
             }
-            end++;
         }
-        return sb.toString();
+        return false;
     }
 }
