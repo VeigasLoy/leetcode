@@ -1,4 +1,4 @@
-// Last updated: 8/1/2025, 8:24:24 PM
+// Last updated: 8/1/2025, 8:25:24 PM
 class Solution {
     public int mostWordsFound(String[] sentences) {
         boolean isword=false;
